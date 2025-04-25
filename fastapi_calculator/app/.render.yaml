@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: fastapi-calculator
+    env: docker
+    plan: free
+    region: oregon
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    autoDeploy: true
