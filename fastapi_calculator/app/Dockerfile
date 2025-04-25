@@ -1,13 +1,25 @@
+# FROM python:3.11-slim
+
+# WORKDIR /app
+
+# # COPY requirements.txt .
+# COPY app/requirements.txt .
+
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# COPY . .
+# # COPY app /app 
+
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
 FROM python:3.11-slim
 
 WORKDIR /app
 
-# COPY requirements.txt .
-COPY app/requirements.txt .
-
+COPY requirements.txt .                  # ✅ now copying from root
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
-# COPY app /app 
+COPY app /app                            # ✅ copies your app folder content
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10000"]
+
